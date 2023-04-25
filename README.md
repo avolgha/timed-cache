@@ -1,5 +1,5 @@
 <p><h2 align="center">timed-cache</h2></p>
-<p>Store values for a limited time in a kind of map.</p>
+<p align="center">Store values for a limited time in a kind of map.</p>
 
 ## Usage
 
