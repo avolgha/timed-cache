@@ -30,10 +30,11 @@ const sleep = (time: number) => new Promise((res) => setTimeout(res, time));
 
 ## Todos
 
-- [ ] Create a way to access stored keys.
-- [ ] Give the developer access to the remaining time of an item.
-- [ ] Create a `forEach` function.
-- [ ] Let developer optionally choose a time for the items removal.
+##### done in v1.0.1
+- [x] Create a way to access stored keys.
+- [x] Give the developer access to the remaining time of an item.
+- [x] Create a `forEach` function.
+- [x] Let developer optionally choose a time for the items removal.
 
 ## Configuration
 
@@ -67,6 +68,9 @@ const key: string = "foo";
 const value: string = "bar";
 
 cache.set(key, value);
+
+// you can also specify a custom time for each item:
+cache.set(key, value, 1000);
 ````
 
 If you then want to get a specific item from the cache, you can use the `get` method. This method
@@ -75,6 +79,21 @@ only requires the key of the item you want to get.
 ````typescript
 const key = "foo";
 const value = cache.get(key);
+````
+
+Like `get` you can also iterate over every item in the cache.
+
+````typescript
+cache.forEach((value) => {
+	// noop
+});
+````
+
+If you want to get all the stored keys in the cache, you have to access them through the `keys`
+property.
+
+````typescript
+const keys = cache.keys;
 ````
 
 If you then not longer need the value, you can remove it with the `remove` function. This function
@@ -93,4 +112,12 @@ const key = "foo";
 if (cache.has(key)) {
 	console.log(`"${cache.get(key)}" is in the cache!`);
 }
+````
+
+If you want to see the remaining time of the entry in the cache, you can use the `remaining` function.
+
+````typescript
+const key = "foo";
+
+const timeRemaining = cache.remaining(key);
 ````
